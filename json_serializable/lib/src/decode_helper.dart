@@ -179,13 +179,11 @@ abstract class DecodeHelper implements HelperCore {
     String value;
     try {
       if (config.checked) {
-        value = contextHelper
-            .deserialize(
-              targetType,
-              'v',
-              defaultProvided: defaultProvided,
-            )
-            .toString();
+        value = "${contextHelper.deserialize(
+          targetType,
+          'v',
+          defaultProvided: defaultProvided,
+        )}?";
         if (!checkedProperty) {
           value = '\$checkedConvert(json, $jsonKeyName, (v) => $value)';
         }
